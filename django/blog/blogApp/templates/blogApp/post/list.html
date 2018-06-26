@@ -12,4 +12,5 @@ My Blog
 Published {{ post.publish }} by {{ post.author }} </p>
  {{ post.body}}
  {% endfor %}
+   {% include "blogApp/pagination.html" with page=posts %}
  {% endblock %}

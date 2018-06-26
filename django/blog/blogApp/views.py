@@ -1,11 +1,15 @@
 from django.shortcuts import render , get_object_or_404
 from .models import Post
+from django.core.paginator import Paginator, EmptyPage , PageNotAnInteger
 
 
 # Create your views here.
 
 def post_list(request):
 	posts_list=Post.published.all()
+	paginator = Paginator(posts_list , 5)
+
+
 
 	print ( "\n\n\n\n" )
 	print ( "We have a request" )
@@ -20,7 +24,16 @@ def post_list(request):
 	print ( "\n\n\n\n" )
 
 
-	return render( request , 'blogApp/post/list.html' , { 'posts' : posts_list } )
+	try:
+		page = request.GET['page']
+		posts = paginator.page(page)
+	except:
+		posts=paginator.page(1)
+
+
+
+
+	return render( request , 'blogApp/post/list.html' , { 'posts' : posts } )
 
 
 
