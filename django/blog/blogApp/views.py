@@ -15,8 +15,8 @@ def post_list(request):
 	print ( "Path_Info " + str( request.path_info ))
 	print ( "Method " + str  (request.method) )
 	print ( "Get" + str (request.GET ) )
-	for post in posts_list:
-		print (post.get_absolute_url())
+	#for post in posts_list:
+	#	print (post.get_absolute_url())
 	print ( "\n\n\n\n" )
 
 
@@ -24,6 +24,6 @@ def post_list(request):
 
 
 
-def post_detail( request, year , month , day , post ):
-	post = get_object_or_404( Post , slug = post , status = 'published' , publish__year = year , publish__month = month , publish__day = day )
-	return render( request , 'detail.html' , { 'post' : post } )
+def post_detail( request, id ):
+	post = get_object_or_404( Post , pk=id )
+	return render( request , 'blogApp/post/detail.html' , { 'post' : post } )

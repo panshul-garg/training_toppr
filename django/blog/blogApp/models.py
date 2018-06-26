@@ -35,9 +35,12 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title + self.body
 
+'''
 	def get_absolute_url(self):
-		return reverse( 'blogApp:post_detail' , args = [ self.publish.year , self.publish.month ,
-			self.publish.day , self.slug])
+		return reverse( 'blogApp:post_detail' , args = [ self.publish.year , self.publish.strftime("%m") ,
+			self.publish.strftime("%d") , self.slug])
+
+'''
 
 
 

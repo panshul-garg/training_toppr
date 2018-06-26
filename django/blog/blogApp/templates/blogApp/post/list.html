@@ -6,9 +6,10 @@ My Blog
 {% block content %}
 <h1> My Blog </h1>
 {% for post in posts %}
-<h2> <a href = "{{ post }}"> {{ post.title }}</a> </h2>
+<h2> <a href = "{% url 'blogApp:post_detail' post.pk %}"> {{ post.title }}</a> </h2>
 <p class = "date" >
- Published {{ post.publish }} by {{ post.author }} </p>
+ This is post number {{post.pk}}<br>
+Published {{ post.publish }} by {{ post.author }} </p>
  {{ post.body}}
  {% endfor %}
  {% endblock %}
