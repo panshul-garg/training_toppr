@@ -8,4 +8,14 @@
 	Published {{ post.publish }} by {{ post.author }}
 </p>
 {{ post.body }}
+{% with comments.count as total_comments %}
+<h2>
+	{{ total_comments }} comment {{ total_comments | pluralize }}
+</h2>
+{% endwith %}
+
+<p>
+	<a href = "{% url 'blogApp:post_share' post.pk %}">Share this post</a> <br>
+
+</p>
 {% endblock %}
