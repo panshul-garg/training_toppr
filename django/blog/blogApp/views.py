@@ -25,15 +25,11 @@ def post_list(request):
 	#	print (post.get_absolute_url())
 	print ( "\n\n\n\n" )
 
-
 	try:
 		page = request.GET['page']
 		posts = paginator.page(page)
 	except:
 		posts=paginator.page(1)
-
-
-
 
 	return render( request , 'blogApp/post/list.html' , { 'posts' : posts } )
 
@@ -42,6 +38,7 @@ def post_list(request):
 def post_detail( request, id ):
 	post = get_object_or_404( Post , pk=id )
 	comments = post.comments.filter( active = True )
+	dummy_variable = "This is the dummy_variable"
 
 	if request.method == 'POST' :
 		comment_form = CommentForm( data = request.POST )
